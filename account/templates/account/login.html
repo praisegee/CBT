@@ -1,0 +1,17 @@
+
+{% extends 'account/main.html' %}
+
+
+	{% block content %}
+
+	<h2>Login</h2>
+	
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+			<input type="text" name="id">
+			<input type="password" name="password">
+			<input type="submit" value="Submit">
+		</form>
+
+	{% endblock content %}
+	
