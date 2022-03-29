@@ -1,0 +1,125 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	width: 100%;
+	background: #E5E7EB;
+	position: relative;
+	display: flex;
+}
+
+
+
+/* MENU SECTION */
+
+#menu {
+	background-color: #111827;
+	width: 300px;
+	height: 100%;
+}
+
+#menu .user-detail img {
+	margin-top: 30px;
+	margin-left: 60px;
+	border: 6px solid #AAA;
+	border-radius: 20px;
+	width: 180px;
+	height: 180px;
+	object-fit: cover;
+}
+
+#menu .user-info {
+	text-align: center;	
+	color: #FFF;
+}
+
+#menu .nav {
+	margin-top: 40px;
+}
+
+#menu .nav li {
+	list-style: none;
+	padding: 15px 0;
+	padding-left: 20px;
+	transition: 0.3s ease;
+}
+
+#menu .nav li:hover {
+	background: #253047;
+	cursor: pointer;
+}
+
+#menu .nav li:nth-child(1) {
+	border-left: 4px solid #FFF;
+}
+
+#menu .nav li i {
+	color: rgb(134, 141, 151);
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 18px;
+	margin-left: 0 10px 0 25px;
+}
+
+#menu .nav li:hover i, #menu .nav li:hover a {
+	color: #F3F4F6;
+}
+
+#menu .nav li a {
+	text-decoration: none;
+	color: rgb(134, 141, 151);
+	font-weight: 300;
+	font-size: 18px;
+	transition: 0.3s ease;
+}
+
+
+
+/* INTERFACE SECTION */
+
+#interface {
+	width: calc(100% - 300px);
+}
+
+#interface .bar {
+	background-color: rgb(134, 141, 151);
+	color: #FFF;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 30px;
+}
+
+#interface .bar .status {
+	display: flex;
+	align-items: center;
+}
+
+#interface .bar .status a {
+	text-decoration: none;
+	color: #FFF;
+}
+
+#interface .bar h2 {
+	letter-spacing: 2px;
+	color: #DEDEEE;
+}
+
+#interface .bar .status i {
+	padding-right: 15px;
+	font-size: 18px;
+}
+
+#interface .bar .status img {
+	width: 30px;
+	height: 30px;
+}
