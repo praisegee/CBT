@@ -1,10 +1,11 @@
-from django.urls import path
+from django.urls import path, include
 
-from dashboard.views import user_dashboard, admin_dashboard
+from dashboard.views import admin_dashboard
 
 app_name = 'dashboard'
 
 urlpatterns = [
-	path('', user_dashboard, name="dashboard"),
+	path('student/', include('dashboard.urls_manager.student_urls', 'student')),
+	path('staff/', include('dashboard.urls_manager.staff_urls', 'staff')),
 	path('admin/', admin_dashboard, name="admin-dashboard"),
 ]

@@ -122,8 +122,15 @@ def login_view(request):
 							password=password
 							)
 		if user is not None:
-			login(request, user)
-			return redirect('dashboard:dashboard')
+			if user.is_student:
+				login(request, user)
+				return redirect('dashboard:student:tests')
+			if user.is_lecturer:
+				login(request, user)
+				return redirect('dashboard:student:tests')
+			if user.is_admin:
+				login(request, user)
+				return redirect('dashboard:student:tests')
 
 	return render(request, 'account/login.html')
 

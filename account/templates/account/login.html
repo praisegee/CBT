@@ -1,17 +1,57 @@
 
+
 {% extends 'account/main.html' %}
 
 
-	{% block content %}
+{% load static %}
 
-	<h2>Login</h2>
-	
-		<form method="post" enctype="multipart/form-data">
-			{% csrf_token %}
-			<input type="text" name="id">
-			<input type="password" name="password">
-			<input type="submit" value="Submit">
+{% block content %}
+
+	<section>
+	  <div class="form-div">
+
+		<div class="logo">
+		  <img src="{%static '/img/logo.png'%}" alt="logo">
+		</div>
+
+		<h2 class="log">
+		  <i class="fa fa-lock" aria-hidden="true"></i> &nbsp; 
+			Log in to your Dashboard 
+		</h2>
+
+		<hr color= "green">
+		<p class="log-desc">Enter your Matric No or Staff Id and Password</p>
+
+		
+		<form id="login-form" method="POST" action="" autocomplete="autocomplete">
+				{% csrf_token %}
+		      
+		  <input type="text" name="id" placeholder="Enter your Matric No/Staff Id">
+
+		  <input type="password" name="password" placeholder="Enter your Password">
+
+		  <button class="login-btn" type="submit">
+		  	Login &nbsp;<i class="fas fa-sign-in-alt"></i>
+		  </button>
+			
 		</form>
 
-	{% endblock content %}
-	
+		<p class="fgt-pwd">
+		  <small><a href="#">Forget password?</a></small>
+		</p>
+
+		<p class="fgt-pwd">
+		  <small>
+		  	Register as 
+		  	<a href="{% url 'account:student-register' %}">Student</a>
+		  	or
+		  	<a href="{% url 'account:staff-register' %}">Staff</a> 
+		  </small>
+		</p>
+		
+	  </div>
+
+	</section>
+
+      
+{% endblock content %}

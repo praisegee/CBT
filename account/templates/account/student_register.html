@@ -3,14 +3,37 @@
 
 
 	{% block content %}
+
+	  <style type="text/css">
+	  	.login-btn {
+	  		border-radius: 5px;
+	  	}
+	  	.fgt-pwd {
+	  		margin-bottom: 10px;
+	  	}
+	  </style>
+
+	  <section>
+
+	    <div class="form-div">
+
+	      <h2 class="log">Student Registration</h2>
 	
-		<form method="post" enctype="multipart/form-data">
+		  <form method="post" enctype="multipart/form-data">
 			{% csrf_token %}
 
 			{{ form.as_p }}
 			
-			<input type="submit" value="Submit">
-		</form>
+			<button class="login-btn" type="submit">Register</button>
+		  </form>
+
+		  <p class="fgt-pwd">
+		   <small>Already have an account?
+		   	<a href="{% url 'account:login' %}">Login</a>
+		   </small>
+		  </p>
+
+	  </section>
 
 	{% endblock content %}
 	
