@@ -1,0 +1,55 @@
+
+{% extends 'dashboard/student-dashboard.html' %}
+
+
+  {% block elements %}
+
+  <style type="text/css">
+      #menu .nav li:nth-child(1) {
+          border-left: 4px solid var(--secondaryText);
+      }
+      #menu .nav li:nth-child(2) {
+          border-left: none;
+      }
+      #menu .nav li:nth-child(3) {
+          border-left: none;
+      }
+  </style>
+
+	<h2>Available Tests</h2>
+
+		<div class="test-list">
+			<table width="100%" class="test-table">
+				<thead>
+					<tr>
+						<td>S/N</td>
+						<td>Course Title</td>
+						<td>Course Code</td>
+						<td>Date</td>
+						<td>Status</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="status-bg-undone">
+						<td>1</td>
+						<td>Introduction to programming I</td>
+						<td>CSC 201</td>
+						<td>12/12/2022</td>
+						<td class="status-undone">
+				          <a href="">
+				            <i class="fa-solid fa-file-pen"></i> Do now
+				          </a>
+				        </td>
+					</tr>
+					<tr class="status-bg-done">
+						<td>2</td>
+						<td>Computer Compiler</td>
+						<td>CSC 206</td>
+						<td>12/12/2022</td>
+						<td class="status-done"><i class="fa-solid fa-check"></i> Done! </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+  {% endblock elements %}

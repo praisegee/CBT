@@ -10,9 +10,22 @@
 
 body {
 	width: 100%;
-	background: #E5E7EB;
+	background-color: #CAEECA;
 	position: relative;
 	display: flex;
+	background-image: url('../img/logo.png');
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-blend-mode: overlay;
+}
+
+:root {
+	--primaryColor: #056608;
+	--primaryText: #035610;
+	--secondaryText: #CABEAE;
+	--borderColor: #DDDDDD;
+	--secondaryColor: #99CC99;
 }
 
 
@@ -20,15 +33,18 @@ body {
 /* MENU SECTION */
 
 #menu {
-	background-color: #111827;
+	background-color: var(--primaryColor);
 	width: 300px;
 	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
 }
 
 #menu .user-detail img {
 	margin-top: 30px;
 	margin-left: 60px;
-	border: 6px solid #AAA;
+	border: 6px solid var(--borderColor);
 	border-radius: 20px;
 	width: 180px;
 	height: 180px;
@@ -52,16 +68,15 @@ body {
 }
 
 #menu .nav li:hover {
-	background: #253047;
-	cursor: pointer;
+	background: var(--secondaryColor);
 }
 
 #menu .nav li:nth-child(1) {
-	border-left: 4px solid #FFF;
+	border-left: 4px solid var(--secondaryText);
 }
 
 #menu .nav li i {
-	color: rgb(134, 141, 151);
+	color: var(--secondaryText);
 	width: 30px;
 	height: 30px;
 	line-height: 30px;
@@ -71,13 +86,13 @@ body {
 }
 
 #menu .nav li:hover i, #menu .nav li:hover a {
-	color: #F3F4F6;
+	color: var(--primaryText);
 }
 
 #menu .nav li a {
 	text-decoration: none;
-	color: rgb(134, 141, 151);
-	font-weight: 300;
+	color: var(--secondaryText);
+	font-weight: 400;
 	font-size: 18px;
 	transition: 0.3s ease;
 }
@@ -88,15 +103,23 @@ body {
 
 #interface {
 	width: calc(100% - 300px);
+	margin-left: 300px;
+	position: relative;
 }
 
 #interface .bar {
-	background-color: rgb(134, 141, 151);
-	color: #FFF;
+	background-color: var(--secondaryColor);
+	color: var(--primaryText);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 10px 30px;
+}
+
+#interface .bar #menu-btn {
+	display: none;
+	cursor: pointer;
+	font-size: 20px;
 }
 
 #interface .bar .status {
@@ -111,15 +134,151 @@ body {
 
 #interface .bar h2 {
 	letter-spacing: 2px;
-	color: #DEDEEE;
-}
-
-#interface .bar .status i {
-	padding-right: 15px;
-	font-size: 18px;
+	color: var(--primaryText);
 }
 
 #interface .bar .status img {
 	width: 30px;
 	height: 30px;
+}
+
+#interface .bar .status .notification {
+	display: inline-block;
+	position: relative;
+}
+
+#interface .bar .status .notification a {
+	display: block;
+	margin-right: 20px;
+}
+
+#interface .bar .status .notification a i {
+	font-size: 18px;
+}
+
+#interface .bar .status .notification a span {
+	display: inline-block;
+	background-color: red;
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	line-height: 10px;
+	right: 5px;
+	top: -5px;
+	padding: 3px;
+	border-radius: 50%;
+	text-align: center;
+	font-size: 10px;
+	font-weight: 400;
+}
+
+#interface .available-test h2 {
+	margin-left: 30px;
+	margin-top: 30px;
+	text-align: center;
+	color: var(--primaryText);
+	font-size: 24px;
+	font-weight: 700;
+}
+
+#interface .available-test .test-list {
+	width: 94%;
+	margin: 30px 0 30px 30px;
+	overflow: auto;
+	background: #FFF;
+	border-radius: 8px;
+}
+
+#interface .test-list .test-table {
+	border-collapse: collapse;
+}
+
+#interface .test-list .test-table tr {
+	border-bottom: 1px solid #EEF0F3;
+	transition: 0.3s ease;
+}
+
+#interface .test-list .test-table thead tr td {
+	background: #90BC95;
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 400;
+	text-align: center;
+	padding: 15px;
+}
+
+#interface .test-list .test-table tbody tr td {
+	text-align: center;
+	padding: 10px 15px;
+	font-size: 14px;
+}
+
+#interface .test-list .test-table tbody tr:hover {
+	background: #CCC;
+}
+
+
+.status-undone {
+	font-size: 22px;
+	color: #880000;
+}
+
+.status-done {
+	font-size: 22px;
+	color: #008800;
+}
+
+
+.status-bg-done {
+	background: #CCEECC;
+}
+
+.status-bg-undone {
+	background: #EECCCC;
+}
+
+
+@media (max-width: 769px) {
+	#menu {
+	    width: 270px;
+	    position: fixed;
+	    left: -270px;
+	    transition: 0.3s ease;
+	}
+	#menu.active {
+		left: 0px;
+	}
+	#interface .bar #menu-btn {
+		display: initial;
+	}
+	#interface {
+		width: 100%;
+		margin-left: 0;
+		display: inline-block;
+		transition: 0.3s ease;
+	}
+	#menu.active ~ #interface {
+		width: calc(100% - 270px);
+		margin-left: 270px;
+		transition: 0.3s ease;
+	}
+	#interface .available-test .test-list {
+		width: 92%;
+		padding: 0;
+		overflow-x: auto;
+	}
+	#interface .test-list .test-table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+}
+
+
+@media (max-width: 477px) {
+	#interface .bar {
+		padding: 15px;
+	}
+	#interface .available-test .test-list {
+		margin: 30px 15px;
+	}
 }
