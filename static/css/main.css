@@ -39,6 +39,10 @@ body {
 	position: fixed;
 	top: 0;
 	left: 0;
+
+	box-shadow: 1px 8px 17px -4px rgba(120,191,138,0.91);
+	-webkit-box-shadow: 1px 8px 17px -4px rgba(120,191,138,0.91);
+	-moz-box-shadow: 1px 8px 17px -4px rgba(120,191,138,0.91);
 }
 
 #menu .user-detail img {
@@ -72,7 +76,7 @@ body {
 }
 
 #menu .nav li:nth-child(1) {
-	border-left: 4px solid var(--secondaryText);
+	border-left: 6px solid var(--secondaryText);
 }
 
 #menu .nav li i {
@@ -114,6 +118,10 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	padding: 10px 30px;
+	
+	box-shadow: -1px 5px 12px 4px rgba(7,48,17,0.44);
+	-webkit-box-shadow: -1px 5px 12px 4px rgba(7,48,17,0.44);
+	-moz-box-shadow: -1px 5px 12px 4px rgba(7,48,17,0.44);
 }
 
 #interface .bar #menu-btn {
@@ -187,6 +195,10 @@ body {
 	overflow: auto;
 	background: #FFF;
 	border-radius: 8px;
+
+	box-shadow: 0px 2px 8px 3px rgba(7,48,17,0.51);
+	-webkit-box-shadow: 0px 2px 8px 3px rgba(7,48,17,0.51);
+	-moz-box-shadow: 0px 2px 8px 3px rgba(7,48,17,0.51);
 }
 
 #interface .test-list .test-table {
@@ -216,7 +228,6 @@ body {
 #interface .test-list .test-table tbody tr:hover {
 	background: #CCC;
 }
-
 
 .status-undone {
 	font-size: 22px;

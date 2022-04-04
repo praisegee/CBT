@@ -1,18 +1,78 @@
 {% extends 'main.html' %}
 
+{% load static %}
+
 
   {% block content %}
 
-  	<section id="menu">
-  		
+    <section id="menu">
+
+      <div class="user-detail">
+        <img src="{% static 'img/d2.jpg' %}">
+        <div class="user-info">
+          <h2>{{ request.user.first_name | title }} {{ request.user.last_name | title }}</h3>
+          <h3>{{ request.user.username | upper}}</h3>
+        </div>
+      </div>
+
+      <div class="nav">
+        <li>
+          <i class="fa-solid fa-file-pen"></i>
+          <a href="{% url 'dashboard:student:tests' %}">Write Test</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-check-to-slot"></i>
+          <a href="{% url 'dashboard:student:result' %}">Check Result</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-print"></i>
+          <a href="{% url 'dashboard:student:print-result' %}">Print Result</a>
+        </li>
+        <li>
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <a href="{% url 'account:logout' %}">Logout</a>
+        </li>
+      </div>
+
+    </section>
 
 
-  	</section>
 
-  	<section id="interface">
-  		
+    <section id="interface">
+      
+      <div class="bar">
+        <div>
+          <i id="menu-btn" class="fas fa-bars"></i>
+        </div>
+        <div class="status">
+          <div class="notification">
+            <a href="#">
+              <i class="far fa-bell"></i>
+              <span>9</span>
+            </a>
+          </div>
+          <img src="{% static 'img/logo.png' %}">
+        </div>
+      </div>
 
-  		
-  	</section>
+                  
+      <div id="interface-board" class="available-test">
+        
+        {% block elements %}
+
+
+        {% endblock elements %}
+
+      </div>
+        
+    </section>
+
+
+
+    <script type="text/javascript">
+      $('#menu-btn').click(function(){
+        $('#menu').toggleClass('active')
+      })
+    </script>
 
   {% endblock content %}

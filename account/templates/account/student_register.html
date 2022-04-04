@@ -11,6 +11,21 @@
 	  	.fgt-pwd {
 	  		margin-bottom: 10px;
 	  	}
+	  	.log {
+	  		margin-top: 10px;
+	  	}
+	  	.alert-error {
+			text-align: center;
+			background: #EECCCC;
+			color: #880000;
+			padding: 10px;
+		}
+		.alert-success {
+			text-align: center;
+			background: #CCEECC;
+			color: #008800;
+			padding: 10px;
+		}
 	  </style>
 
 	  <section>
@@ -18,6 +33,12 @@
 	    <div class="form-div">
 
 	      <h2 class="log">Student Registration</h2>
+
+	      {% if messages %}
+			{% for message in messages %}
+				<p class="alert-{{message.tags}}" id="msg">{{ message }}</p>
+			{% endfor %}
+		  {% endif %}
 	
 		  <form method="post" enctype="multipart/form-data">
 			{% csrf_token %}

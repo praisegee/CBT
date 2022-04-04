@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from account.models import User, Lecturer, Student
+from account.models import User
 
 from account.forms import AdminRegistrationForm
 
@@ -20,6 +20,4 @@ class AdminUser(UserAdmin):
 
 admin.site.register(User, AdminUser)
 
-admin.site.register(Lecturer)
-admin.site.register(Student)
 
