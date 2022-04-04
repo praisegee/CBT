@@ -59,31 +59,3 @@ class User(AbstractUser):
 
 
 
-# CREATE STAFF MODEL
-class Lecturer(models.Model):
-	staff_id 		= models.CharField(max_length=50, unique=True, primary_key=True)
-	user 			= models.OneToOneField(User, on_delete=models.CASCADE) 
-	email 			= models.EmailField(null=True, blank=True)
-	image 			= models.ImageField(default=None)
-
-	def __str__(self):
-		return self.user.username
-
-
-# CREATE STUDENT MODEL
-class Student(models.Model):
-	matric_no 		= models.CharField(max_length=50, unique=True, primary_key=True)
-	user 			= models.OneToOneField(User, on_delete=models.CASCADE) 
-	email 			= models.EmailField(null=True, blank=True)
-	image 			= models.ImageField(default=None)
-
-	def __str__(self):
-		return self.user.username
-
-
-
-
-
-
-
-

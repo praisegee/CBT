@@ -7,6 +7,21 @@
 
 {% block content %}
 
+<style>
+	.alert-error {
+		text-align: center;
+		background: #EECCCC;
+		color: #880000;
+		padding: 10px;
+	}
+	.alert-success {
+		text-align: center;
+		background: #CCEECC;
+		color: #008800;
+		padding: 10px;
+	}
+</style>
+
 	<section>
 	  <div class="form-div">
 
@@ -14,30 +29,33 @@
 		  <img src="{%static '/img/logo.png'%}" alt="logo">
 		</div>
 
-		<h2 class="log">
-		  <i class="fa fa-lock" aria-hidden="true"></i> &nbsp; 
-			Log in to your Dashboard 
-		</h2>
+		<h2 class="log">Log in to your Dashboard</h2>
 
 		<hr color= "green">
 		<p class="log-desc">Enter your Matric No or Staff Id and Password</p>
 
+		{% if messages %}
+			{% for message in messages %}
+				<p class="alert-{{message.tags}}" id="msg">{{ message }}</p>
+			{% endfor %}
+		{% endif %}
+
 		
-		<form id="login-form" method="POST" action="" autocomplete="autocomplete">
+		<form id="login-form" method="POST" action="">
 				{% csrf_token %}
 		      
-		  <input type="text" name="id" placeholder="Enter your Matric No/Staff Id">
+		  <input type="text" name="id" placeholder="Enter your Matric No/Staff Id" required>
 
-		  <input type="password" name="password" placeholder="Enter your Password">
+		  <input type="password" name="password" placeholder="Enter your Password" required>
 
 		  <button class="login-btn" type="submit">
-		  	Login &nbsp;<i class="fas fa-sign-in-alt"></i>
+		  	Login &nbsp;&nbsp;<i class="fas fa-sign-in-alt"></i>
 		  </button>
 			
 		</form>
 
 		<p class="fgt-pwd">
-		  <small><a href="#">Forget password?</a></small>
+		  <small><a href="{% url 'password_reset' %}">Forget password?</a></small>
 		</p>
 
 		<p class="fgt-pwd">
@@ -53,5 +71,16 @@
 
 	</section>
 
+<!-- 
+	<script>
+		
+		setTimeout(function(){
+			if($('#msg').length > 0){
+				$('#msg').remove();
+			}
+		}, 2000)
+
+	</script>
+ -->
       
 {% endblock content %}

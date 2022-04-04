@@ -8,10 +8,10 @@
   	<section id="menu">
 
   		<div class="user-detail">
-  			<img src="{% static 'img/d2.jpg' %}">
+  			<img src="{{ request.user.student.imageURL }}">
   			<div class="user-info">
   				<h2>{{ request.user.first_name | title }} {{ request.user.last_name | title }}</h3>
-  				<h3>{{ request.user.username | upper}}</h3>
+  				<h3>[{{ request.user.username | upper}}]</h3>
   			</div>
   		</div>
 
