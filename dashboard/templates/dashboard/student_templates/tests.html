@@ -19,7 +19,9 @@
 	<h2>Available Tests</h2>
 
 		<div class="test-list">
+
 			<table width="100%" class="test-table">
+
 				<thead>
 					<tr>
 						<td>S/N</td>
@@ -29,25 +31,36 @@
 						<td>Status</td>
 					</tr>
 				</thead>
+
 				<tbody>
-					<tr class="status-bg-undone">
-						<td>1</td>
-						<td>Introduction to programming I</td>
-						<td>CSC 201</td>
-						<td>12/12/2022</td>
-						<td class="status-undone">
-				          <a href="">
+
+					{% for question in questions %}
+						{% if question.is_done %}
+							<tr class="status-bg-done">
+								<td>{{ forloop.counter }}</td>
+								<td>{{ question.course_title | title }}</td>
+								<td>{{ question.course_code | upper }}</td>
+								<td>{{ question.test_date }}</td>
+								<td class="status-done">
+									<i class="fa-solid fa-check"></i> Done! 
+								</td>
+				        </td>
+							</tr>
+						{% else %}
+							<tr class="status-bg-undone">
+								<td>{{ forloop.counter }}</td>
+								<td>{{ question.course_title | title }}</td>
+								<td>{{ question.course_code | upper}}</td>
+								<td>{{ question.test_date }}</td>
+								<td class="status-undone">
+				          <a href="{% url 'dashboard:student:write-test' question.id %}">
 				            <i class="fa-solid fa-file-pen"></i> Do now
 				          </a>
 				        </td>
-					</tr>
-					<tr class="status-bg-done">
-						<td>2</td>
-						<td>Computer Compiler</td>
-						<td>CSC 206</td>
-						<td>12/12/2022</td>
-						<td class="status-done"><i class="fa-solid fa-check"></i> Done! </td>
-					</tr>
+							</tr>
+						{% endif %}
+					{% endfor %}
+					
 				</tbody>
 			</table>
 		</div>

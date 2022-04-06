@@ -1,0 +1,43 @@
+
+{% extends 'dashboard/student-dashboard.html' %}
+
+
+  {% block elements %}
+
+  <style type="text/css">
+      #menu .nav li:nth-child(1) {
+          border-left: 6px solid var(--secondaryText);
+      }
+      #menu .nav li:nth-child(2) {
+          border-left: none;
+      }
+      #menu .nav li:nth-child(3) {
+          border-left: none;
+      }
+  </style>
+
+
+  <div class="test-list">
+    <h2>Write Test</h2>
+
+    <div>
+      
+      {% for qs in test.question %}
+        <p>{{ qs }}</p>
+        {% for i in test.optionA %}
+          <p>{{ i }}</p>
+        {% endfor %}
+      {% endfor %}
+    </div>
+
+    <!-- {{ test.question.0 }} -->
+  </div>
+
+
+  <script>
+
+
+  </script>
+
+
+  {% endblock elements %}

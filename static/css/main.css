@@ -28,6 +28,77 @@ body {
 	--secondaryColor: #99CC99;
 }
 
+.form-div {
+	width: 50%;
+	max-width: 80%;
+	margin: 10px auto;
+	padding: 10px 30px;
+	border: 3px solid green;
+	border-radius: 20px;
+	background-color: #fff;
+	margin-bottom: 40px;
+
+	box-shadow: 1px 8px 17px -4px rgba(120,191,138,0.91);
+	-webkit-box-shadow: 1px 8px 17px -4px rgba(120,191,138,0.91);
+	-moz-box-shadow: 1px 8px 17px -4px rgba(120,191,138,0.91);
+}
+
+.form-div form label {
+	display: block;
+	font-size: 20px;
+	color: darkgreen;
+	margin: 3px;
+}
+
+.form-div form input {
+	display: block;
+	margin: 7px 0 20px 0;
+	padding: 5px 7px;
+	height: 40px;
+	width: 100%;
+	font-size: 18px;
+	color: darkgreen;
+	border-radius: 5px;
+}
+
+textarea {
+	font-size: 18px;
+	color: darkgreen;
+	border-radius: 5px;
+	padding: 10px;
+	text-align: left;
+	height: 150px;
+	width: 100%;
+}
+
+select {
+	width: 100%;
+	height: 40px;
+	font-size: 18px;
+	color: darkgreen;
+	border-radius: 5px;
+	padding-left: 5px;
+}
+
+.form-div form input:focus, textarea:focus, select:focus {
+	outline: green;
+	border-radius: 5px;
+	border: 2px solid green;
+	box-shadow: 0px 0px 10px green;
+}
+
+.set-btn {
+	display: block;
+	width: 30%;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 7px;
+	background: #48B853;
+	color: #fff !important;
+	font-size: 22px !important;
+	cursor: pointer;
+}
+
 
 
 /* MENU SECTION */
@@ -250,6 +321,9 @@ body {
 
 
 @media (max-width: 769px) {
+	.form-div {
+		width: 70%;
+	}
 	#menu {
 	    width: 270px;
 	    position: fixed;
@@ -286,6 +360,9 @@ body {
 
 
 @media (max-width: 477px) {
+	.form-div {
+		width: 100%;
+	}
 	#interface .bar {
 		padding: 15px;
 	}
