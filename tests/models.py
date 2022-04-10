@@ -1,6 +1,6 @@
 from django.db import models
 
-from roles.models import Lecturer
+from roles.models import Lecturer, Student
 
 class Question(models.Model):
 	DURATION = (
@@ -13,6 +13,7 @@ class Question(models.Model):
 			(50, 50),
 		)
 	lecturer 			= models.ForeignKey(Lecturer, on_delete=models.CASCADE)
+	student 			= models.ManyToManyField(Student)
 	course_title 		= models.CharField(max_length=100, blank=True, null=True)
 	course_code 		= models.CharField(max_length=100, blank=True, null=True)
 	instruction 		= models.TextField(max_length=1000, blank=True, null=True)
@@ -23,5 +24,18 @@ class Question(models.Model):
 	file 				= models.FileField(upload_to="questions", blank=True, null=True)
 	date_created 		= models.DateTimeField(auto_now_add=True)
 
+
 	def __str__(self):
 		return str(self.course_code).upper()
+
+
+
+class Notification(models.Model):
+	message 			= models.TextField(blank=True, null=True)
+	is_checked 			= models.BooleanField(default=False)
+	date_created 		= models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return str(self.id)
+
+

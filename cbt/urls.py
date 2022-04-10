@@ -18,6 +18,7 @@ urlpatterns = [
     path('', include('account.urls', 'account')),
     path('admin/', admin.site.urls),
     path('dashboard/', include('dashboard.urls', 'dashboard')),
+    path('api/', include('api.urls')),
 
 
     path('reset_password/', 

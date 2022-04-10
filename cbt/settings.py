@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'dashboard.apps.DashboardConfig',
     'roles.apps.RolesConfig',
     'tests.apps.TestsConfig',
+    'api.apps.ApiConfig',
     
 ]
 

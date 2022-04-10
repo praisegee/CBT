@@ -1,43 +1,38 @@
 
 {% extends 'dashboard/student-dashboard.html' %}
-
-
+  {% load static %}
   {% block elements %}
 
-  <style type="text/css">
-      #menu .nav li:nth-child(1) {
-          border-left: 6px solid var(--secondaryText);
-      }
-      #menu .nav li:nth-child(2) {
-          border-left: none;
-      }
-      #menu .nav li:nth-child(3) {
-          border-left: none;
-      }
-  </style>
-
+  <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/write_test.css' %}">
 
   <div class="test-list">
-    <h2>Write Test</h2>
 
-    <div>
-      
-      {% for qs in test.question %}
-        <p>{{ qs }}</p>
-        {% for i in test.optionA %}
-          <p>{{ i }}</p>
-        {% endfor %}
-      {% endfor %}
+    <div class="header">
+      <a class="back" href="{% url 'dashboard:student:tests' %}">
+        <i class="fa-solid fa-arrow-left"></i>&nbsp;Back
+      </a>
+      <p>Time</p>
+    </div>
+    <hr>
+
+    <div id="test-container">
+
+      <h2 id="title">Intructions</h2>
+
+      <div class="test-wrapper">  
+       <p id="instruction" class="text">{{ question.instruction | safe }}</p>
+      </div>
+
+      <div class="btn-wrapper">
+        <button id="start-btn" class="btn">Start</button>
+      </div>
+
     </div>
 
-    <!-- {{ test.question.0 }} -->
   </div>
 
-
-  <script>
-
-
-  </script>
-
+  {% include 'dashboard/snippet/write_test_js.html' %}
 
   {% endblock elements %}
+
+

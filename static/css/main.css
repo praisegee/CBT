@@ -356,6 +356,9 @@ select {
 		width: 100%;
 		border-collapse: collapse;
 	}
+	.option {
+		width: 70%;
+	}
 }
 
 
@@ -368,5 +371,8 @@ select {
 	}
 	#interface .available-test .test-list {
 		margin: 30px 15px;
+	}
+	.option {
+		width: 90%;
 	}
 }
