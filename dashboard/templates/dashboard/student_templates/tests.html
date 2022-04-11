@@ -18,6 +18,8 @@
 
 	<h2>Available Tests</h2>
 
+		{% if questions %}
+
 		<div class="test-list">
 
 			<table width="100%" class="test-table">
@@ -63,6 +65,12 @@
 					
 				</tbody>
 			</table>
+
+			{% else %}
+				<h2>No Test available! Check back later.</h2>
+
 		</div>
+
+		{% endif %}
 
   {% endblock elements %}
