@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from tests.models import Question, Notification
+
+admin.site.register(Question)
+admin.site.register(Notification)

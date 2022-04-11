@@ -1,0 +1,101 @@
+
+{% extends 'dashboard/lecturer-dashboard.html' %}
+
+
+  {% block elements %}
+
+  <style type="text/css">
+      #menu .nav li:nth-child(1) {
+          border-left: 6px solid var(--secondaryText);
+      }
+      #menu .nav li:nth-child(2) {
+          border-left: none;
+      }
+      #menu .nav li:nth-child(3) {
+          border-left: none;
+      }
+      #menu .nav li:nth-child(4) {
+          border-left: none;
+      }
+      h1 {
+      	text-align: center;
+      	font-size: 2.5rem;
+      	margin-top: 15px;
+      	color: var(--primaryText);
+      }
+      h3 {
+      	margin: 20px 20px 10px;
+      	font-size: 1.5rem;
+      }
+      p {
+      	padding: 5px;
+      }
+      .question-list {
+      	padding: 10px;
+      	width: 100%;
+      	font-size: 20px;
+      	border-bottom: 1px dashed #909090;
+      }
+  </style>
+
+		<h1>Set Tests</h1>
+
+		<div class="test-list">
+			<h3>Questions</h3>
+			<hr>
+			{% for question in questions %}
+				<div class="question-list">
+					{{ question }} -- {{ question.course_title | title }}
+				</div>
+			{% endfor %}
+		</div>
+
+		<div class="test-list">
+			<h3>Set Questions</h3>
+			<hr>
+
+			<div class="form-div">
+
+				<form method="post" enctype="multipart/form-data">
+					{% csrf_token %}
+
+					<label for="id_course_title">Course title:</label>
+					<input type="text" name="course_title" maxlength="100" required id="id_course_title">
+
+					<label for="id_course_code">Course code:</label>
+				  <input type="text" name="course_code" maxlength="100" required id="id_course_code">
+
+					<label for="id_instruction">Instruction:</label>
+			    <textarea name="instruction" cols="40" rows="10" required id="id_instruction">
+					</textarea>
+
+					<label for="id_no_of_question">No of question:</label>
+			    <input type="number" name="no_of_question" required id="id_no_of_question">
+
+					<label for="id_minite_to_finish">Minite to finish:</label>
+					<select name="minite_to_finish" id="id_minite_to_finish">
+					  <option value="20">20</option>
+					  <option value="25">25</option>
+					  <option value="30">30</option>
+					  <option value="35">35</option>
+					  <option value="40">40</option>
+					  <option value="45">45</option>
+					  <option value="50">50</option>
+					</select>
+
+					<label for="id_test_date">Test Date</label>
+					<input type="datetime-local" name="test_date" required id="id_test_date">
+
+					<label for="id_file">File:</label>
+			   	<input type="file" name="file" required id="id_file">
+				
+					<input class="set-btn" type="submit" value="Set Question" />
+
+			  </form>
+			</div>
+			
+	
+		</div>
+
+
+  {% endblock elements %}

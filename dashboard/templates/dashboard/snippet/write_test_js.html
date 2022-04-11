@@ -1,0 +1,103 @@
+
+<script type="text/javascript">
+	
+	let testContainer = document.getElementById('test-container');
+	let instructionWrapper = document.getElementById('instruction-wrapper');
+
+	let startBtn = document.getElementById('start-btn');
+
+	const id = {{ question.id }}
+
+	startBtn.addEventListener('click', function(){
+	  let test = new Question(id);
+	  // console.log(test.data)
+	  test.startTest(testContainer);
+	})
+
+
+	// url = `http://127.0.0.1:8000/api/question/${id}/`
+
+	class Question {
+
+	  constructor(id) {
+	    this.questionNo = 2;
+	    this.id = id;
+	    this.url = `http://127.0.0.1:8000/api/question/${this.id}/`;
+	    // this.data = this.getQuestion(this.url);
+	  }
+
+	  async getQuestion(url) {   
+	    try {
+	      let resp = await fetch(url);
+	      return await resp.json()
+	      .then(data => {
+	        console.log(data)
+	        return data
+	      })
+	    } catch (error) {
+	      console.log(error)
+	    }
+	  }
+
+	  async startTest(parent) {
+	    // const questionNo = 1;
+	    const data = await this.getQuestion(this.url);
+	    let testInterface = `<form>
+
+	                  <div class="question">
+	                    <p id="q-${this.questionNo}">${this.questionNo}. ${data[this.questionNo]['question']}</p>
+	                  </div>
+
+	                  <div class="option-wrapper">
+
+	                    <div class="option">
+	                      <input type="radio" id="A-${this.questionNo}" name="answer" value="A">
+	                      <label for="A-${this.questionNo}">${data[this.questionNo]['optionA']}</label>
+	                    </div>
+
+	                    <div class="option">
+	                      <input type="radio" id="B-${this.questionNo}" name="answer" value="B">
+	                      <label for="B-${this.questionNo}">${data[this.questionNo]['optionB']}</label>
+	                    </div>
+
+	                    <div class="option">
+	                      <input type="radio" id="C-${this.questionNo}" name="answer" value="C">
+	                      <label for="C-${this.questionNo}">${data[this.questionNo]['optionC']}</label>
+	                    </div>
+
+	                    <div class="option">
+	                      <input type="radio" id="D-${this.questionNo}" name="answer" value="D">
+	                      <label for="D-${this.questionNo}">${data[this.questionNo]['optionD']}</label>
+	                    </div>
+
+	                  </div>
+
+	                  <div class="button-list">
+	                  	<button id="first" class="btn">First</button>
+	                  	<button id="first" class="btn">Previous</button>
+	                  	<button id="first" class="btn">Next</button>
+	                  	<button id="first" class="btn">Last</button>
+	                  	<button id="first" class="btn">Submit</button>
+	                  </div>
+
+	                </form>`
+
+	                parent.innerHTML = testInterface;
+
+	                let options = document.getElementsByClassName('option');
+
+	                function checked() {
+	                  this.childNodes[1].checked = true;
+	                  console.log("working")
+	                  console.log(this.childNodes[1])
+	                }
+
+	                for (let option of options) {
+	                  option.addEventListener('click', checked, true);
+	                }
+
+	  }
+
+
+	}
+</script>

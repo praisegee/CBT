@@ -1,0 +1,30 @@
+question,optionA,optionB,optionC,optionD,answer
+Which of the following extract instructions and decodes them?,Memory,CPU,ALU,Control Unit,B
+Which linking unit allows the entry of data into the computer system?,Output Unit,Input Unit,Processor,Cache memory,B
+Which of the following holds data for a long period of time?,Cache Memory,Hard Disk,RAM,Diskette,B
+Which of the following refers to instruction set of a computer?,Arithmetic operations performed by a memory location,Logical operations performed by a cache memory,The operations a microprocessor performs,"
+Arithmetic operations performed by a microprocessor
+",C
+Which of the following makes up the CPU?,Memory and ALU,Cache and Control unit,Control unit and ALU,Ram and Control unit,C
+Which of the following is the fastest?,RAM,Cache,Hard drive,Flash disk,B
+Which of the following is a unit for measuring the speed of a computer system,10-9,10-6,103,106,B
+"With respect to computer system, what is versatility?","
+Ability to carry out same multiple tasks
+",ability to execute completely different type of work,"ability to carry out related tasks in limited time
+
+","ability to carry out iteration.
+",B
+Which of the following is an in-built memory?,"
+hard disk
+",magnetic drive,RAM/cache,Floppy disk,C
+Which of the following is crucial to problem solving?,Problem initiation,Problem identification,Problem creation,"
+Problem definition",B
+The primary language understood by a computer is______________,High level language,Low level language,"
+Intermediate language","Object languages
+",C
+Which of the following relates to steps required to complete a task?,Flowcharts,Data flows,Algorithm,Structure charts,C
+Which of the following is closer to the processor?,RAM,Cache,Hard drive,Flash disk,B
+Which of the following is not a function of the input unit?,It accepts (or reads) the list of instructions and data from the outside world.,It converts these instructions and data in computer acceptable format.,It supplies the converted instructions and data to the computer system for further processing,"
+It converts these coded results to human acceptable (readable) form",D
+Which of the following is a flash memory device?,Memory stick,Blu-ray disc,Tape cassette,SSD,D
+Which of the following functions as both input and output device?,Facsimile,Plotters,Webcam,Projector,A

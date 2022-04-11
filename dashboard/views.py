@@ -1,15 +1,15 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from dashboard.views_manager.student_view_manager import (
-		tests_view,
-	)
+from dashboard.views_manager.lecturer_view_manager import questions
+
+from dashboard.views_manager.student_view_manager import tests_view
 
 
 @login_required
-def admin_dashboard(request, *args, **kwargs):
+def lecturer_dashboard(request, *args, **kwargs):
 	context = {}
-	return render(request, 'dashboard/admin-dashboard.html', context)
+	return questions(request)
 
 @login_required
 def student_dashboard(request, *args, **kwargs):

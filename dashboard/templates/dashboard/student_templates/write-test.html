@@ -1,0 +1,38 @@
+
+{% extends 'dashboard/student-dashboard.html' %}
+  {% load static %}
+  {% block elements %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'dashboard/css/write_test.css' %}">
+
+  <div class="test-list">
+
+    <div class="header">
+      <a class="back" href="{% url 'dashboard:student:tests' %}">
+        <i class="fa-solid fa-arrow-left"></i>&nbsp;Back
+      </a>
+      <p>Time</p>
+    </div>
+    <hr>
+
+    <div id="test-container">
+
+      <h2 id="title">Intructions</h2>
+
+      <div class="test-wrapper">  
+       <p id="instruction" class="text">{{ question.instruction | safe }}</p>
+      </div>
+
+      <div class="btn-wrapper">
+        <button id="start-btn" class="btn">Start</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  {% include 'dashboard/snippet/write_test_js.html' %}
+
+  {% endblock elements %}
+
+

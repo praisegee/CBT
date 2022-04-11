@@ -44,7 +44,7 @@ def staff_register_view(request):
 		user.first_name 	= firstname
 		user.last_name 		= lastname
 		user.email 			= email
-		user.is_staff 		= True
+		user.is_lecturer 	= True
 		user.set_password(password)
 		user.save()
 
@@ -132,13 +132,9 @@ def login_view(request):
 			if user.is_student:
 				login(request, user)
 				return redirect('dashboard:student:tests')
-			if user.is_lecturer:
+			elif user.is_lecturer:
 				login(request, user)
-				return redirect('dashboard:student:tests')
-			if user.is_admin:
-				login(request, user)
-				return redirect('dashboard:student:tests')
-
+				return redirect('dashboard:lecturer:questions')
 		else:
 			messages.error(request, 'Invalid Credentials. Try again!')
 
