@@ -1,4 +1,5 @@
 import json, csv
+import pandas as pd
 from django.shortcuts import render
 from django.http import JsonResponse
 
@@ -11,6 +12,10 @@ def get_question(request, pk, *args, **kwargs):
 
 	question 	= Question.objects.get(id=pk)
 	file_path	= f'.{question.file.url}'
+
+	if file_path.endswith('xlsx') or file_path.endswith('xls'):
+		file = pd.read_excel(file_path)
+		file_path = file.to_csv()
 
 	test = []
 	data = []

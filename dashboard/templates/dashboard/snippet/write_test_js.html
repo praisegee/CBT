@@ -6,32 +6,67 @@
 
 	let startBtn = document.getElementById('start-btn');
 
+	let countDown = document.getElementById('timer');
+
 	const id = {{ question.id }}
 
-	startBtn.addEventListener('click', function(){
-	  let test = new Question(id);
-	  // console.log(test.data)
-	  test.startTest(testContainer);
-	})
+	const duration = {{ question.minite_to_finish }}
+
+	let firstBtn = document.getElementById('first');
+	let prevBtn = document.getElementById('prev');
+	let nextBtn = document.getElementById('next');
+	let lastBtn = document.getElementById('last');
+	let submitBtn = document.getElementById('submit');
+
+	function showBtn() {
+			firstBtn.style.display = "inline-block";
+			prevBtn.style.display = "inline-block";
+			submitBtn.style.display = "inline-block";
+		}
 
 
 	// url = `http://127.0.0.1:8000/api/question/${id}/`
 
+
+
+
+	startBtn.addEventListener('click', function(){
+	  let test = new Question(id, duration);
+	  test.loadTest(testContainer);
+	  let x = setInterval(() => {
+	  	  test.countDownTimer(countDown);
+	  	}, 1000)
+	})
+
+
+
+	// lastBtn.addEventListener('click', function(){
+	// 	submitBtn.style.display = "block";
+	// })
+
+
+
+
+
+
+
 	class Question {
 
-	  constructor(id) {
+	  constructor(id, duration) {
 	    this.questionNo = 2;
 	    this.id = id;
 	    this.url = `http://127.0.0.1:8000/api/question/${this.id}/`;
-	    // this.data = this.getQuestion(this.url);
+	    this.duration = (duration * 60);
 	  }
+
+
 
 	  async getQuestion(url) {   
 	    try {
 	      let resp = await fetch(url);
 	      return await resp.json()
 	      .then(data => {
-	        console.log(data)
+	        // console.log(data)
 	        return data
 	      })
 	    } catch (error) {
@@ -39,64 +74,88 @@
 	    }
 	  }
 
-	  async startTest(parent) {
-	    // const questionNo = 1;
+
+
+
+	  async loadTest(parent) {    
 	    const data = await this.getQuestion(this.url);
-	    let testInterface = `<form>
+	    let testInterface = `
+		    <form>
 
-	                  <div class="question">
-	                    <p id="q-${this.questionNo}">${this.questionNo}. ${data[this.questionNo]['question']}</p>
-	                  </div>
+	          <div class="question">
+	            <p id="q-${this.questionNo}">${this.questionNo}. ${data[this.questionNo]['question']}</p>
+	          </div>
 
-	                  <div class="option-wrapper">
+	          <div class="option-wrapper">
 
-	                    <div class="option">
-	                      <input type="radio" id="A-${this.questionNo}" name="answer" value="A">
-	                      <label for="A-${this.questionNo}">${data[this.questionNo]['optionA']}</label>
-	                    </div>
+	            <div class="option">
+	              <input type="radio" id="A-${this.questionNo}" name="answer" value="A">
+	              <label for="A-${this.questionNo}">${data[this.questionNo]['optionA']}</label>
+	            </div>
 
-	                    <div class="option">
-	                      <input type="radio" id="B-${this.questionNo}" name="answer" value="B">
-	                      <label for="B-${this.questionNo}">${data[this.questionNo]['optionB']}</label>
-	                    </div>
+	            <div class="option">
+	              <input type="radio" id="B-${this.questionNo}" name="answer" value="B">
+	              <label for="B-${this.questionNo}">${data[this.questionNo]['optionB']}</label>
+	            </div>
 
-	                    <div class="option">
-	                      <input type="radio" id="C-${this.questionNo}" name="answer" value="C">
-	                      <label for="C-${this.questionNo}">${data[this.questionNo]['optionC']}</label>
-	                    </div>
+	            <div class="option">
+	              <input type="radio" id="C-${this.questionNo}" name="answer" value="C">
+	              <label for="C-${this.questionNo}">${data[this.questionNo]['optionC']}</label>
+	            </div>
 
-	                    <div class="option">
-	                      <input type="radio" id="D-${this.questionNo}" name="answer" value="D">
-	                      <label for="D-${this.questionNo}">${data[this.questionNo]['optionD']}</label>
-	                    </div>
+	            <div class="option">
+	              <input type="radio" id="D-${this.questionNo}" name="answer" value="D">
+	              <label for="D-${this.questionNo}">${data[this.questionNo]['optionD']}</label>
+	            </div>
 
-	                  </div>
+	          </div>
 
-	                  <div class="button-list">
-	                  	<button id="first" class="btn">First</button>
-	                  	<button id="first" class="btn">Previous</button>
-	                  	<button id="first" class="btn">Next</button>
-	                  	<button id="first" class="btn">Last</button>
-	                  	<button id="first" class="btn">Submit</button>
-	                  </div>
+	          <div class="button-list">
+	          	<button id="first" class="btn">First</button>
+	          	<button id="prev" class="btn">Previous</button>
+	          	<button id="next" class="btn">Next</button>
+	          	<button id="last" class="btn">Last</button>
+	          	<button id="submit" class="btn">Submit</button>
+	          </div>
 
-	                </form>`
+	        </form>`
 
-	                parent.innerHTML = testInterface;
+            parent.innerHTML = testInterface;
 
-	                let options = document.getElementsByClassName('option');
+            let options = document.getElementsByClassName('option');
 
-	                function checked() {
-	                  this.childNodes[1].checked = true;
-	                  console.log("working")
-	                  console.log(this.childNodes[1])
-	                }
+            function checked() {
+              this.childNodes[1].checked = true;
+              console.log("working")
+              console.log(this.childNodes[1])
+            }
 
-	                for (let option of options) {
-	                  option.addEventListener('click', checked, true);
-	                }
+            for (let option of options) {
+              option.addEventListener('click', checked, true);
+            }
 
 	  }
+
+
+	  countDownTimer(timeElement) {
+	  	// var time = (duration * 60);
+	  	let minites = Math.floor(this.duration / 60);
+	  	let seconds = this.duration % 60;
+
+	  	let min = (minites < 10 ? '0' : '') + minites; 
+	  	let sec = (seconds < 10 ? '0' : '') + seconds;
+
+	  	let timer = `${min} : ${sec}`
+
+	  	// console.log(timer);
+	  	timeElement.innerHTML = timer;
+	  	this.duration--;
+
+	  }
+
+
+
+		
 
 
 	}
